@@ -42,10 +42,13 @@ d3.json('https://d3fc.io/examples/bubble/data.json', function(error, data) {
         .yOrient('left')
         .plotArea(pointSeries)
         .decorate(function(selection) {
-          var plot = selection.enter().select('.plot-area');
-          // append an svg and render the legend
-          plot.append('svg').attr('class', 'legend-container').call(legend);;
+          selection.enter() // functions chained after enter are only called once
+            .select('.plot-area')
+            .append('svg')  // append an svg so d3-legend renders rects correctly
+            .attr('class', 'legend-container');  // add class for positioning
 
+          // functions chained after select are called whenever the chart updates
+          selection.select('svg.legend-container').call(legend);
         });
 
     d3.select('#bubble-chart')
