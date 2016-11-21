@@ -1,6 +1,7 @@
 ---
 layout: example
 title: Line / Area Chart
+example: true
 externals:
   simple-js: simple.js
   simple-html: simple.html

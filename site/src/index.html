@@ -1,10 +1,40 @@
 ---
 layout: default
+externals:
+  simple-js: /examples/simple/simple.js
+  simple-html: /examples/simple/simple.html
+  streaming-js: /examples/streaming/streaming.js
+  streaming-html: /examples/streaming/streaming.html
+  streaming-css: /examples/streaming/streaming.css
+  bubble-js: /examples/bubble/bubble.js
+  bubble-html: /examples/bubble/bubble.html
 ---
 <div class="jumbotron text-center" id="jumbo1">
   <img alt="d3fc" src="{{baseurl}}/images/logo.svg" />
   <p>A collection of components that make it easy to build interactive charts with D3.</p>
   <a class="jumbotron-btn" href="https://github.com/ScottLogic/d3fc">View on GitHub</a>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      {{{simple-html}}}
+      {{{ dynamic-include 'javascript' js='simple-js' }}}
+    </div>
+    <div class="col-md-6">
+      <style>
+      {{streaming-css}}
+      </style>
+      {{{streaming-html}}}
+      {{{ dynamic-include 'javascript' js='streaming-js' }}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{{bubble-html}}}
+      {{{ dynamic-include 'javascript' js='bubble-js' }}}
+    </div>
+  </div>
 </div>
 
 <div id="quick-start" class="quick-start">
@@ -14,7 +44,6 @@ layout: default
         <h1 class="text-center">QUICK START</h1>
       </div>
     </div>
-
     <div class="row">
       <div class="col-sm-3 ">
         <h3>Install</h3>

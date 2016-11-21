@@ -1,6 +1,7 @@
 ---
 layout: example
 title: Bubble Chart
+example: true
 externals:
   bubble-js: bubble.js
   bubble-html: bubble.html

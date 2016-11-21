@@ -1,6 +1,7 @@
 ---
 layout: example
 title: Streaming Financial Chart
+example: true
 externals:
   streaming-js: streaming.js
   streaming-html: streaming.html
