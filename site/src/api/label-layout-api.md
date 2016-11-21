@@ -9,7 +9,7 @@ structure:
       overlapping labels.
 
 
-      ![d3fc label layout](d3fc-label-layout.png)
+      ![d3fc label layout](d3fc-label-layout/d3fc-label-layout.png))
 
 
       For a live demo, see the [GitHub Pages
@@ -258,7 +258,7 @@ structure:
               This is a simple component that renders a label:
 
 
-              ![d3fc label layout](textLabel.png)
+              ![d3fc label layout](d3fc-label-layout/textLabel.png))
 
 
               This component uses the `layout-width` and `layout-height`

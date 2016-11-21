@@ -28,7 +28,7 @@ var chart = fc.chartSvgCartesian(
   .xDomain(xExtent(data))
   .xLabel('Value')
   .chartLabel('Sine/Cosine Line/Area Chart')
-  .decorate((selection) => {
+  .decorate(function(selection) {
     selection.select('.plot-area')
       .style('background', 'white');
     selection.select('.y-axis-label')
@@ -39,7 +39,7 @@ var chart = fc.chartSvgCartesian(
 var sinLine = fc.seriesSvgLine()
   .crossValue(function(d) { return d.x; })
   .mainValue(function(d) { return d.y; })
-  .decorate((selection) => {
+  .decorate(function(selection) {
     selection.enter()
       .style('stroke', 'purple');
   });
@@ -47,7 +47,7 @@ var sinLine = fc.seriesSvgLine()
 var cosLine = fc.seriesSvgArea()
   .crossValue(function(d) { return d.x; })
   .mainValue(function(d) { return d.z; })
-  .decorate((selection) => {
+  .decorate(function(selection) {
     selection.enter()
       .style('fill', 'lightgreen')
       .style('fill-opacity', 0.5);

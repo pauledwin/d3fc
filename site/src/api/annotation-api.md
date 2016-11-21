@@ -13,17 +13,21 @@ structure:
 
       <tr>
 
-      <td><a href="#gridline"><img src="screenshots/gridline.png"/></a></td>
+      <td><a href="#gridline"><img
+      src="d3fc-annotation/screenshots/gridline.png"/></a></td>
 
-      <td><a href="#crosshair"><img src="screenshots/crosshair.png"/></a></td>
+      <td><a href="#crosshair"><img
+      src="d3fc-annotation/screenshots/crosshair.png"/></a></td>
 
       </tr>
 
       <tr>
 
-      <td><a href="#band"><img src="screenshots/band.png"/></a></td>
+      <td><a href="#band"><img
+      src="d3fc-annotation/screenshots/band.png"/></a></td>
 
-      <td><a href="#line"><img src="screenshots/line.png"/></a></td>
+      <td><a href="#line"><img
+      src="d3fc-annotation/screenshots/line.png"/></a></td>
 
       </tr>
 

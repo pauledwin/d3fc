@@ -86,8 +86,9 @@ structure:
 
           If `d3-transition` is available, new nodes will have a fade-in
           transition applied and removed nodes will have a fade-out transition
-          applied. The transition timings can be controlled from the node
-          selection passed in or one of the ancestors there of.
+          applied. The transition timings can be controlled from the container
+          selection passed in or by explicitly setting
+          [`transition`](#dataJoin_transition).
 
 
           ```js
@@ -102,16 +103,19 @@ structure:
           const quickTransition = transition()
             .duration(300);
 
-          const join = dataJoin('li', 'animal')
+          const join = dataJoin('li', 'animal');
+
+
+          const container = select('ul')
             .transition(quickTransition);
 
-          join(select('ul'), ['Aardvark', 'Beaver', 'Cat'])
+          join(container, ['Aardvark', 'Beaver', 'Cat'])
             .text(d => d);
           ```
 
 
-          To disable the default transition (only required if `d3-transition` is
-          available), explicitly set a transition with a zero duration -
+          To disable transitions, explicitly retrieve the selection from the
+          transition before passing it in -
 
 
           ```js
@@ -123,13 +127,19 @@ structure:
           import { transition } from 'd3-transition';
 
 
-          const zeroDurationTransition = transition()
-            .duration(0);
+          const quickTransition = transition()
+            .duration(300);
 
-          const join = dataJoin('li', 'animal')
-            .transition(zeroDurationTransition);
+          const join = dataJoin('li', 'animal');
 
-          join(select('ul'), ['Aardvark', 'Beaver', 'Cat'])
+
+          const root = select('body')
+            .transition(quickTransition);
+
+          const container = root.select('ul')
+            .selection();
+
+          join(container, ['Aardvark', 'Beaver', 'Cat'])
             .text(d => d);
           ```
 
@@ -173,10 +183,9 @@ structure:
           *dataJoin*.**transition**(*transition*)
 
 
-          Specifies the transition to be used if `d3-transition` is available.
-          Defaults to `null` which uses the default transition,`. Equivalent to
-          specifying a `key` argument when calling
-          `[selection.data()](https://github.com/d3/d3-selection#selection_data)`.
+          Specifies the transition to be used if an implicit transition is not
+          supplied as the container. Defaults to `null` which disables
+          transitions.
 sidebarContents: []
 layout: api
 section: api

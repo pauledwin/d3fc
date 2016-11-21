@@ -7,21 +7,20 @@ d3.json('https://d3fc.io/examples/bubble/data.json', function(_, data) {
   });
 
   var regions = d3.set(data.map(function(d) { return d.region; }));
-  var color = d3.scaleOrdinal(d3.schemeCategory10).domain(regions.values());
-  var legend = d3.legendColor().scale(color);
+  var color = d3.scaleOrdinal(d3.schemeCategory10)
+    .domain(regions.values());
+
+  var legend = d3.legendColor()
+    .scale(color);
 
   var size = d3.scaleLinear().range([20, 800])
-              .domain(fc.extentLinear()
-                .accessors([d => d.population])(data));
-
-  var radiusScale = d3.scaleSqrt().domain([0, 5e8]).range([0, 40]);
-  function population(d) { return d.population; };
-  function pointArea(d) { return Math.pow(radiusScale(population(d)), 2) * Math.PI; }
+    .domain(fc.extentLinear()
+    .accessors([function(d) { return d.population; }])(data));
 
   var pointSeries = fc.seriesSvgPoint()
       .crossValue(function(d) { return d.income; })
       .mainValue(function(d) { return d.lifeExpectancy; })
-      .size(pointArea)
+      .size(function(d) { return size(d.population); })
       .decorate(function(sel) {
         sel.enter()
             .attr('fill', function(d) { return color(d.region); });
@@ -32,27 +31,30 @@ d3.json('https://d3fc.io/examples/bubble/data.json', function(_, data) {
                 d3.scaleLinear()
               )
       .xDomain(fc.extentLinear()
-        .accessors([d => d.income])(data))
+        .accessors([function(d) { return d.income; }])(data))
       .yDomain(fc.extentLinear()
-        .accessors([d => d.lifeExpectancy])(data))
+        .accessors([function(d) { return d.lifeExpectancy; }])(data))
+      .chartLabel('The Wealth & Health of Nations')
       .xLabel('Income (dollars)')
       .yLabel('Life expectancy (years)')
       .xTicks(2, d3.format(',d'))
-      .chartLabel('The Wealth & Health of Nations')
       .yOrient('left')
       .plotArea(pointSeries)
       .decorate(function(selection) {
-        selection.enter() // functions chained after enter are only called once
+        // append an svg for the d3-legend
+        selection.enter()
           .select('.plot-area')
-          .append('svg')  // append an svg so d3-legend renders rects correctly
-          .attr('class', 'legend-container');  // add class for positioning
+          .append('svg')
+          .attr('class', 'legend-container');
 
-        // functions chained after select are called whenever the chart updates
-        selection.select('svg.legend-container').call(legend);
+        // render the legend
+        selection.select('svg.legend-container')
+          .call(legend);
       });
 
   d3.select('#bubble-chart')
-      .text(null) // Remove the loading text from the container
+      // remove the loading text from the container
+      .text(null)
       .datum(data)
       .call(chart);
 });
