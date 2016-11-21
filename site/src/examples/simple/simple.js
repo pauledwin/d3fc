@@ -16,7 +16,7 @@ var yExtent = fc.extentLinear()
   .padUnit('domain');
 
 var xExtent = fc.extentLinear()
-  .accessors([function(d) { return d.x; }])
+  .accessors([function(d) { return d.x; }]);
 
 // create a chart
 var chart = fc.chartSvgCartesian(
@@ -41,7 +41,7 @@ var sinLine = fc.seriesSvgLine()
   .mainValue(function(d) { return d.y; })
   .decorate((selection) => {
     selection.enter()
-      .style('stroke', 'purple')
+      .style('stroke', 'purple');
   });
 
 var cosLine = fc.seriesSvgArea()
@@ -50,7 +50,7 @@ var cosLine = fc.seriesSvgArea()
   .decorate((selection) => {
     selection.enter()
       .style('fill', 'lightgreen')
-      .style('fill-opacity', 0.5)
+      .style('fill-opacity', 0.5);
   });
 
 var gridlines = fc.annotationSvgGridline();
