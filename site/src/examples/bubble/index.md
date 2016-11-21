@@ -5,9 +5,14 @@ example: true
 externals:
   bubble-js: bubble.js
   bubble-html: bubble.html
+  bubble-css: bubble.css
 ---
 
-{{{ dynamic-include 'codepen' html='bubble-html' js='bubble-js'}}}
+<style>
+{{{bubble-css}}}
+</style>
+
+{{{ dynamic-include 'codepen' html='bubble-html' js='bubble-js' css='bubble-css'}}}
 {{{ bubble-html }}}
 {{{ dynamic-include 'javascript' js='bubble-js' }}}
 

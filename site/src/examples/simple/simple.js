@@ -27,13 +27,7 @@ var chart = fc.chartSvgCartesian(
   .yOrient('left')
   .xDomain(xExtent(data))
   .xLabel('Value')
-  .chartLabel('Sine/Cosine Line/Area Chart')
-  .decorate(function(selection) {
-    selection.select('.plot-area')
-      .style('background', 'white');
-    selection.select('.y-axis-label')
-      .style('white-space', 'nowrap');
-  });
+  .chartLabel('Sine/Cosine Line/Area Chart');
 
 // create a pair of series and some gridlines
 var sinLine = fc.seriesSvgLine()

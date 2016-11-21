@@ -36,7 +36,7 @@ d3.json('https://d3fc.io/examples/bubble/data.json', function(_, data) {
         .accessors([function(d) { return d.lifeExpectancy; }])(data))
       .chartLabel('The Wealth & Health of Nations')
       .xLabel('Income (dollars)')
-      .yLabel('Life expectancy (years)')
+      .yLabel('Life&nbsp;expectancy&nbsp;(years)')
       .xTicks(2, d3.format(',d'))
       .yOrient('left')
       .plotArea(pointSeries)
@@ -44,11 +44,13 @@ d3.json('https://d3fc.io/examples/bubble/data.json', function(_, data) {
         // append an svg for the d3-legend
         selection.enter()
           .select('.plot-area')
+          .append('div')
+          .attr('class', 'legend-container')
           .append('svg')
-          .attr('class', 'legend-container');
+          .attr('class', 'legend');
 
         // render the legend
-        selection.select('svg.legend-container')
+        selection.select('.legend')
           .call(legend);
       });
 

@@ -8,6 +8,7 @@ externals:
   streaming-css: /examples/streaming/streaming.css
   bubble-js: /examples/bubble/bubble.js
   bubble-html: /examples/bubble/bubble.html
+  bubble-css: /examples/bubble/bubble.css
 ---
 <div class="jumbotron text-center" id="jumbo1">
   <img alt="d3fc" src="{{baseurl}}/images/logo.svg" />
@@ -31,6 +32,9 @@ externals:
   </div>
   <div class="row">
     <div class="col-md-6">
+      <style>
+      {{bubble-css}}
+      </style>
       {{{bubble-html}}}
       {{{ dynamic-include 'javascript' js='bubble-js' }}}
     </div>

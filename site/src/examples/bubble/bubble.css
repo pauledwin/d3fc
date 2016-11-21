@@ -1,0 +1,11 @@
+.legend-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 120px;
+}
+
+.point {
+  stroke: transparent;
+}
